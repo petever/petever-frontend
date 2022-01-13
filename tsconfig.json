@@ -22,7 +22,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "incremental": true
   },
   "include": [
@@ -33,5 +33,13 @@
   "exclude": [
     "node_modules",
     "next.config.js"
-  ]
+  ],
+  "paths": {
+    "components/*":["src/App/components/*"],
+    "hooks/*":["src/App/hooks/*"],
+    "services/*":["src/App/services/*"],
+    "stores/*":["src/App/stores/*"],
+    "types/*":["src/App/types/*"],
+    "utils/*":["src/App/utils/*"],
+    },
 }

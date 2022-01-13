@@ -25,6 +25,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'prettier/react',
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    'next/core-web-vitals',
   ],
   rules: {
     '@typescript-eslint/no-unused-vars': [
