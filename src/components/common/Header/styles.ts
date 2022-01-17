@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { COLORS } from 'src/constant/common';
 
 type WrapperProps = {
   isScroll: boolean;
@@ -9,8 +10,6 @@ export const Wrapper = styled.header<WrapperProps>`
   top: 0;
   right: 0;
   z-index: 10;
-  background: #fff;
-  height: 104px;
   border-bottom: ${(props) => (props.isScroll ? '1px solid #ededed' : 'none')};
 `;
 
@@ -31,28 +30,31 @@ export const TopMenu = styled.ul`
   }
 `;
 export const HeaderMain = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 40px;
+  background: #000;
+  color: #fff;
 `;
 
 export const Logo = styled.h1`
-  margin: 0;
-  font-size: 30px;
+  margin: 0 0 0 -17px;
+  padding: 0px 40px;
+  border-bottom: 2px solid #fff;
 `;
 
 export const Nav = styled.nav`
   display: flex;
+  padding: 2px 40px;
 `;
 export const Gnb = styled.ul`
   display: flex;
-  margin-left: auto;
+
   text-align: -webkit-match-parent;
   li + li {
     margin-left: 40px;
   }
   li a {
-    color: #333;
+    color: #dfdfdf;
+  }
+  li a:hover {
+    color: ${COLORS.main};
   }
 `;

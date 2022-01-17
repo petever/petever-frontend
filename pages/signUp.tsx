@@ -1,5 +1,8 @@
 import React from 'react';
-import SignUpForm from '../components/SignUpForm';
+
+import dynamic from 'next/dynamic';
+
+const SignUpForm = dynamic(() => import('src/components/SignUpForm'));
 
 const signUp = () => {
   return <SignUpForm />;

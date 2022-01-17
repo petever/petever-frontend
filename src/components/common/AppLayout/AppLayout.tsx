@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../Footer';
-import Header from '../Header';
+
 import styled from '@emotion/styled';
+import Header from '../Header';
+import Footer from '../Footer';
 
 type AppLayoutProps = {
   children: React.ReactNode;

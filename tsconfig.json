@@ -35,11 +35,12 @@
     "next.config.js"
   ],
   "paths": {
-    "components/*":["src/App/components/*"],
-    "hooks/*":["src/App/hooks/*"],
-    "services/*":["src/App/services/*"],
-    "stores/*":["src/App/stores/*"],
-    "types/*":["src/App/types/*"],
-    "utils/*":["src/App/utils/*"],
+    "@components/*":["src/components/*"],
+    "@hooks/*":["src/hooks/*"],
+    "@services/*":["src/services/*"],
+    "@stores/*":["src/stores/*"],
+    "@types/*":["src/types/*"],
+    "@utils/*":["src/utils/*"],
+    "@images/*":["src/assets/images/*"],
     },
 }

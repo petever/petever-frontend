@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import PeteverLogo from '../../../assets/images/peteverLogo.svg';
 import {
   Gnb,
   HeaderMain,
@@ -41,9 +42,21 @@ const Header = () => {
         </TopMenu>
       </HeaderTop>
       <HeaderMain>
-        <Logo>Petever</Logo>
+        <Logo>
+          <PeteverLogo />
+        </Logo>
         <Nav>
           <Gnb>
+            <li>
+              <Link href="/">
+                <a>MAGAZINE</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a>MUST READ</a>
+              </Link>
+            </li>
             <li>
               <Link href="/">
                 <a>ARCHIVES</a>
