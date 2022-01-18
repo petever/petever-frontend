@@ -22,25 +22,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "incremental": true,
     "baseUrl": "./",
-    "incremental": true
+    "paths": {
+      "@/*": ["./*"]
+    },
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "./src/**/*",
   ],
   "exclude": [
     "node_modules",
     "next.config.js"
   ],
-  "paths": {
-    "@components/*":["src/components/*"],
-    "@hooks/*":["src/hooks/*"],
-    "@services/*":["src/services/*"],
-    "@stores/*":["src/stores/*"],
-    "@types/*":["src/types/*"],
-    "@utils/*":["src/utils/*"],
-    "@images/*":["src/assets/images/*"],
-    },
 }

@@ -14,10 +14,11 @@ const App: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
   pageProps,
 }) => {
-  const queryClientRef = React.useRef<QueryClient>();
-  if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient();
-  }
+  const queryClientRef = new QueryClient();
+  // const queryClientRef = React.useRef<QueryClient>();
+  // if (!queryClientRef.current) {
+  //   queryClientRef.current = new QueryClient();
+  // }
   return (
     <main>
       <Head>
@@ -30,7 +31,7 @@ const App: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
           ${common}
         `}
       />
-      <QueryClientProvider client={queryClientRef.current}>
+      <QueryClientProvider client={queryClientRef}>
         <Hydrate state={pageProps.dehydratedState}>
           <AppLayout>
             <Component {...pageProps} />
