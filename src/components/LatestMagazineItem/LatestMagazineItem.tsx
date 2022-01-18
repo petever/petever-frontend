@@ -1,35 +1,47 @@
 import Link from 'next/link';
 import React from 'react';
+import {
+  Category,
+  Description,
+  Img,
+  ItemWrapper,
+  Widget,
+  Date,
+  Writer,
+  ItemContent,
+} from './styles';
 
 const LatestMagazineItem = () => {
   return (
-    <li>
+    <ItemWrapper>
       <Link href="/">
-        <a>
+        <ItemContent>
           <div>
-            <img
+            <Img
               width={268}
               height={176}
               src="https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_960_720.jpg"
               alt=""
             />
           </div>
-          <dl>
-            <dt>PET LIFE hahahahaah</dt>
+          <Description>
+            <dt>우리집 고양이 츄르 존니 좋아해</dt>
             <dd>
-              <div>
-                <span>PET LIFE</span>
-                <span>petever</span>
-                <span>2021-01-22</span>
-              </div>
+              <Widget>
+                <Category>LIFE</Category>
+                <Writer>Petever</Writer>
+                <Date>2021-01-22</Date>
+              </Widget>
               <p>
-                rkasdasdasdlkajsdlkasjdlkasdjaslkdjaslkdsajdlkasjdalksdjaslkdjaslkdjsalkdasjldkajdklsjadlkajdalskd
+                Bulldogs may look tough, but inside they’re sweet and gentle.
+                They have a friendly temperament and a fond attachment to home
+                and family. 츄르
               </p>
             </dd>
-          </dl>
-        </a>
+          </Description>
+        </ItemContent>
       </Link>
-    </li>
+    </ItemWrapper>
   );
 };
 

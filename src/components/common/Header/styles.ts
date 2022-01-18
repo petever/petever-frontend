@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { COLORS } from 'src/constant/common';
+import { COLORS } from '@/src/constant/common';
 
 type WrapperProps = {
   isScroll: boolean;
@@ -9,8 +9,9 @@ export const Wrapper = styled.header<WrapperProps>`
   left: 0;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1;
   border-bottom: ${(props) => (props.isScroll ? '1px solid #ededed' : 'none')};
+  background: #fff;
 `;
 
 export const HeaderTop = styled.div`
@@ -36,7 +37,7 @@ export const HeaderMain = styled.div`
 
 export const Logo = styled.h1`
   margin: 0 0 0 -17px;
-  padding: 0px 40px;
+  padding: 0 0 4px 40px;
   border-bottom: 2px solid #fff;
 `;
 

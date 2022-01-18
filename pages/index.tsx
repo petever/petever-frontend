@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import LatestMagazine from '@/src/components/LatestMagazine';
 
 const Home = () => {
   return (

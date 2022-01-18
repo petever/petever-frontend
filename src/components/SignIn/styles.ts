@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { COLORS } from '../../constant/common';
+import { COLORS } from '../../constant/common';
 
 export const Wrapper = styled.section`
   display: flex;

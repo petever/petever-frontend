@@ -5,7 +5,7 @@ export const common = css`
     box-sizing: border-box;
   }
   body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
     text-size-adjust: none;
     font-smoothing: antialiased;
     line-height: 1.5;
