@@ -60,9 +60,16 @@ export const SignUpButton = styled(Button)({
     backgroundColor: '#000',
   },
 });
+export const CheckboxTitle = styled.div`
+  margin: 10px 0 5px;
+  text-align: left;
+`;
 
 export const CheckboxWrapper = styled(FormGroup)({
   '&': {
+    padding: '10px',
+    border: '1px solid #ddd',
     width: '400px',
+    borderRadius: '4px',
   },
 });

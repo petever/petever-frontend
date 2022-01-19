@@ -41,7 +41,3 @@ export const Button = styled.button`
     margin-left: 20px;
   }
 `;
-
-export const InputCode = styled.input`
-  border: 1px solid #000;
-`;

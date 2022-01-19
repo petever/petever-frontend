@@ -6,12 +6,13 @@ import {
   NICKNAME_REGEX,
   VALIDATION_MESSAGE,
 } from 'src/constant/auth';
-import { setMailCode } from 'src/service/auth';
+import { getCheckEmail, setMailCode } from 'src/service/auth';
 
 import { Checkbox, FormControlLabel } from '@mui/material';
 import SignUpEmailConfirm from '../SignUpEmailConfirm';
 
 import {
+  CheckboxTitle,
   CheckboxWrapper,
   EmailButton,
   FormItem,
@@ -23,7 +24,6 @@ import {
 
 const SignUpForm = () => {
   const [emailVerification, setEmailVerification] = useState({
-    code: 0,
     modal: false,
     success: false,
   });
@@ -58,13 +58,14 @@ const SignUpForm = () => {
         message: VALIDATION_MESSAGE.certification,
       };
     }
-    if (!PASSWORD_REGEX.test(nickname)) {
+
+    if (!NICKNAME_REGEX.test(nickname)) {
       return {
         valid: false,
         message: VALIDATION_MESSAGE.nickname,
       };
     }
-    if (!NICKNAME_REGEX.test(password)) {
+    if (!PASSWORD_REGEX.test(password)) {
       return {
         valid: false,
         message: VALIDATION_MESSAGE.password,
@@ -81,19 +82,27 @@ const SignUpForm = () => {
     };
   };
 
+  const handleEmailDuplicateCheck = async () => {
+    try {
+      await getCheckEmail(email);
+      alert('이미 가입된 이메일입니다.');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleEmailAuthentication = useCallback(async () => {
     try {
       if (isEmailValidation) {
-        setEmailVerification({
-          code: 0,
-          modal: true,
-          success: false,
-        });
-        setMailCode(email);
+        const result = await setMailCode(email);
+        result.status === 200 &&
+          setEmailVerification({
+            modal: true,
+            success: false,
+          });
       }
     } catch (error) {
       setEmailVerification({
-        code: 0,
         modal: false,
         success: false,
       });
@@ -127,6 +136,7 @@ const SignUpForm = () => {
             label="이메일"
             variant="outlined"
             onChange={handleInputsChange}
+            onBlur={handleEmailDuplicateCheck}
             value={email || ''}
           />
           {!emailVerification.success && (
@@ -165,6 +175,7 @@ const SignUpForm = () => {
             value={password || ''}
           />
         </FormItem>
+        <CheckboxTitle>약관동의</CheckboxTitle>
         <CheckboxWrapper>
           <FormControlLabel
             control={

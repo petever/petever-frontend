@@ -1,7 +1,5 @@
-import { Input } from '@mui/material';
-import React, { useRef } from 'react';
-import { getMailAuthentication } from 'src/service/auth';
-import { Title, Wrapper, Text, Button, InputCode } from './styles';
+import { getAuthCheck } from '@/src/service/auth';
+import { Title, Wrapper, Text, Button } from './styles';
 
 type SignUpEmailConfirmProps = {
   email: string;
@@ -11,17 +9,16 @@ const SignUpEmailConfirm = ({
   email,
   setEmailVerification,
 }: SignUpEmailConfirmProps) => {
-  const codeRef = useRef(null);
   const handleMailCertify = async () => {
     try {
-      const code = codeRef.current.value;
-      const result = await getMailAuthentication(code, email);
-      console.log(result);
-      setEmailVerification({
-        modal: false,
-        success: true,
-      });
+      const result = await getAuthCheck(email);
+      result.data &&
+        setEmailVerification({
+          modal: false,
+          success: true,
+        });
     } catch (error) {
+      alert('이메일 인증을 확인부탁드립니다.');
       setEmailVerification({
         modal: true,
         success: false,
@@ -46,7 +43,6 @@ const SignUpEmailConfirm = ({
         <br />
         감사합니다.
       </Text>
-      <InputCode type="text" ref={codeRef} />
       <Button onClick={handleMailCertify}>확인</Button>
       <Button onClick={handleClose}>닫기</Button>
     </Wrapper>
