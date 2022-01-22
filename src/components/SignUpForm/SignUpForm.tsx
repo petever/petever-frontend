@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import Router from 'next/router';
 import useInputs from 'src/hooks/useInputs';
 
-import { getCheckEmailAPI, setMailCodeAPI } from '@/src/apis/auth';
+import { getCheckEmailAPI, setMailCodeAPI, signUpAPI } from '@/src/apis/auth';
 import {
   EMAIL_REGEX,
   PASSWORD_REGEX,
@@ -43,9 +43,9 @@ const SignUpForm = () => {
   const { email, nickname, password } = signUpInputs;
   const { limit, terms, personal } = signUpCheck;
 
-  const isEmailValidation = (email: string) => {
+  const isEmailValidation = useCallback((email: string) => {
     return EMAIL_REGEX.test(email);
-  };
+  }, []);
 
   const isAuthValidation = () => {
     if (!isEmailValidation(email)) {
@@ -73,7 +73,7 @@ const SignUpForm = () => {
         message: VALIDATION_MESSAGE.password,
       };
     }
-    if (!limit && !terms && !personal) {
+    if (!limit || !terms || !personal) {
       return {
         valid: false,
         message: VALIDATION_MESSAGE.check,
@@ -84,14 +84,17 @@ const SignUpForm = () => {
     };
   };
 
-  const handleEmailDuplicateCheck = async () => {
+  const handleEmailDuplicateCheck = useCallback(async () => {
+    if (!email) {
+      return;
+    }
     try {
       await getCheckEmailAPI(email);
       alert('이미 가입된 이메일입니다.');
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [email]);
 
   const handleEmailAuthentication = useCallback(async () => {
     try {
@@ -111,28 +114,34 @@ const SignUpForm = () => {
     }
   }, [email]);
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = event.target;
-    setSignUpCheck({
-      [name]: checked,
-    });
-  };
+  const handleCheckboxChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, checked } = event.target;
+      setSignUpCheck({
+        ...signUpCheck,
+        [name]: checked,
+      });
+    },
+    [signUpCheck]
+  );
 
-  const handleSignUp = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const authValidation = isAuthValidation();
-    if (!authValidation.valid) {
-      return alert(authValidation.message);
-    }
-
-    // signUpAPI({ email, password, nickname })
-    //   .then(() => {
-    //     Router.replace('/');
-    //   })
-    //   .catch((error) => {
-    //     alert(error.response.data);
-    //   });
-  };
+  const handleSignUp = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const authValidation = isAuthValidation();
+      if (!authValidation.valid) {
+        return alert(authValidation.message);
+      }
+      signUpAPI({ email, name: nickname, password })
+        .then(() => {
+          Router.replace('/');
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    },
+    [isAuthValidation()]
+  );
 
   return (
     <Wrapper>
@@ -209,7 +218,7 @@ const SignUpForm = () => {
                 // checked={terms}
               />
             }
-            label="이용약관"
+            label="이용약관 (필수)"
           />
           <FormControlLabel
             control={
@@ -221,7 +230,7 @@ const SignUpForm = () => {
                 // checked={personal}
               />
             }
-            label="개인정보수집 및 이용동의"
+            label="개인정보수집 및 이용동의 (필수)"
           />
         </CheckboxWrapper>
         <SignUpButton type="submit">가입하기</SignUpButton>
