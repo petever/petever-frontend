@@ -1,4 +1,4 @@
-import { getAuthCheck } from '@/src/service/auth';
+import { getAuthCheckAPI } from '@/src/apis/auth';
 import { Title, Wrapper, Text, Button } from './styles';
 
 type SignUpEmailConfirmProps = {
@@ -11,7 +11,7 @@ const SignUpEmailConfirm = ({
 }: SignUpEmailConfirmProps) => {
   const handleMailCertify = async () => {
     try {
-      const result = await getAuthCheck(email);
+      const result = await getAuthCheckAPI(email);
       result.data &&
         setEmailVerification({
           modal: false,

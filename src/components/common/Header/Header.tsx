@@ -30,12 +30,12 @@ const Header = () => {
       <HeaderTop>
         <TopMenu>
           <li>
-            <Link href="/signUp">
+            <Link href="/signup">
               <a>회원가입</a>
             </Link>
           </li>
           <li>
-            <Link href="/signIn">
+            <Link href="/signin">
               <a>로그인</a>
             </Link>
           </li>

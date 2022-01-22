@@ -1,12 +1,14 @@
 import React, { useCallback, useState } from 'react';
+import Router from 'next/router';
 import useInputs from 'src/hooks/useInputs';
+
+import { getCheckEmailAPI, setMailCodeAPI } from '@/src/apis/auth';
 import {
   EMAIL_REGEX,
   PASSWORD_REGEX,
   NICKNAME_REGEX,
   VALIDATION_MESSAGE,
 } from 'src/constant/auth';
-import { getCheckEmail, setMailCode } from 'src/service/auth';
 
 import { Checkbox, FormControlLabel } from '@mui/material';
 import SignUpEmailConfirm from '../SignUpEmailConfirm';
@@ -84,7 +86,7 @@ const SignUpForm = () => {
 
   const handleEmailDuplicateCheck = async () => {
     try {
-      await getCheckEmail(email);
+      await getCheckEmailAPI(email);
       alert('이미 가입된 이메일입니다.');
     } catch (error) {
       console.log(error);
@@ -94,7 +96,7 @@ const SignUpForm = () => {
   const handleEmailAuthentication = useCallback(async () => {
     try {
       if (isEmailValidation) {
-        const result = await setMailCode(email);
+        const result = await setMailCodeAPI(email);
         result.status === 200 &&
           setEmailVerification({
             modal: true,
@@ -120,8 +122,16 @@ const SignUpForm = () => {
     event.preventDefault();
     const authValidation = isAuthValidation();
     if (!authValidation.valid) {
-      alert(authValidation.message);
+      return alert(authValidation.message);
     }
+
+    // signUpAPI({ email, password, nickname })
+    //   .then(() => {
+    //     Router.replace('/');
+    //   })
+    //   .catch((error) => {
+    //     alert(error.response.data);
+    //   });
   };
 
   return (
