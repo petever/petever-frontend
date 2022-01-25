@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   position: absolute;
   left: 50%;
   top: 50%;
+  min-width: 620px;
   padding: 30px;
   background: #fff;
   border-radius: 20px;

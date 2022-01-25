@@ -34,7 +34,7 @@ const SignUpForm = () => {
     terms: false,
     personal: false,
   });
-  const [signUpInputs, handleInputsChange] = useInputs({
+  const [signUpInputs, handleInputsChange, setSignUpInputs] = useInputs({
     email: '',
     nickname: '',
     password: '',
@@ -91,6 +91,10 @@ const SignUpForm = () => {
     try {
       await getCheckEmailAPI(email);
       alert('이미 가입된 이메일입니다.');
+      setSignUpInputs({
+        ...signUpInputs,
+        email: '',
+      });
     } catch (error) {
       console.log(error);
     }
@@ -137,7 +141,7 @@ const SignUpForm = () => {
           Router.replace('/');
         })
         .catch((error) => {
-          console.log(error.response.data);
+          console.log(error);
         });
     },
     [isAuthValidation()]

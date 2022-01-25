@@ -134,9 +134,9 @@ typings/
 
 # Serverless directories
 .serverless
-/front/build/
-react-nodebird.pem
-react-nodebird-aws.pem
+/build/
 node_modules
 .env
+.env.development
 .next
+petever-front.pem

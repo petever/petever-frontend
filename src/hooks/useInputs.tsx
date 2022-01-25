@@ -9,7 +9,7 @@ const useInputs = (initialInputs) => {
     },
     []
   );
-  return [inputs, handleInputsChange];
+  return [inputs, handleInputsChange, setInputs];
 };
 
 export default useInputs;
