@@ -138,5 +138,6 @@ typings/
 node_modules
 .env
 .env.development
+.env.production
 .next
-petever-front.pem
+petever-aws.pem
