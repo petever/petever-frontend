@@ -1,4 +1,4 @@
-import LatestMagazine from '@/src/components/LatestMagazine';
+import LatestMagazine from '@components/LatestMagazine';
 
 const Home = () => {
   return (

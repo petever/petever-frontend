@@ -2,14 +2,6 @@ import React, { useCallback, useState } from 'react';
 import Router from 'next/router';
 import useInputs from 'src/hooks/useInputs';
 
-import { getCheckEmailAPI, setMailCodeAPI, signUpAPI } from '@/src/apis/auth';
-import {
-  EMAIL_REGEX,
-  PASSWORD_REGEX,
-  NICKNAME_REGEX,
-  VALIDATION_MESSAGE,
-} from 'src/constant/auth';
-
 import { Checkbox, FormControlLabel } from '@mui/material';
 import SignUpEmailConfirm from '../SignUpEmailConfirm';
 
@@ -23,6 +15,8 @@ import {
   SingUpTitle,
   Wrapper,
 } from './styles';
+import { getCheckEmailAPI, setMailCodeAPI, signUpAPI } from '@apis/auth';
+import { EMAIL_REGEX, VALIDATION_MESSAGE, NICKNAME_REGEX, PASSWORD_REGEX } from '@constant/auth';
 
 const SignUpForm = () => {
   const [emailVerification, setEmailVerification] = useState({
@@ -240,10 +234,7 @@ const SignUpForm = () => {
         <SignUpButton type="submit">가입하기</SignUpButton>
       </form>
       {emailVerification.modal && (
-        <SignUpEmailConfirm
-          email={email}
-          setEmailVerification={setEmailVerification}
-        />
+        <SignUpEmailConfirm email={email} setEmailVerification={setEmailVerification} />
       )}
     </Wrapper>
   );

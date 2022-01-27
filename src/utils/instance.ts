@@ -6,7 +6,7 @@ import axios from 'axios';
     https://github.com/axios/axios 의 Request Config 챕터 확인
 */
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_DEVELOPMENT_ENV_VARIABLE,
+  baseURL: process.env.NEXT_PUBLIC_APP_API_KEY,
   // headers: {'X-Custom-Header': 'foobar'}
 });
 

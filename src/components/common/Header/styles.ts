@@ -1,5 +1,5 @@
+import { COLORS } from '@constant/common';
 import styled from '@emotion/styled';
-import { COLORS } from '@/src/constant/common';
 
 type WrapperProps = {
   isScroll: boolean;

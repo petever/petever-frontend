@@ -1,15 +1,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import PeteverLogo from '../../../assets/images/peteverLogo.svg';
-import {
-  Gnb,
-  HeaderMain,
-  HeaderTop,
-  Logo,
-  Nav,
-  TopMenu,
-  Wrapper,
-} from './styles';
+import { Gnb, HeaderMain, HeaderTop, Logo, Nav, TopMenu, Wrapper } from './styles';
 
 const Header = () => {
   const [isScroll, setIsScroll] = useState(false);

@@ -33,9 +33,8 @@ const LatestMagazineItem = () => {
                 <Date>2021-01-22</Date>
               </Widget>
               <p>
-                Bulldogs may look tough, but inside they’re sweet and gentle.
-                They have a friendly temperament and a fond attachment to home
-                and family. 츄르
+                Bulldogs may look tough, but inside they’re sweet and gentle. They have a friendly
+                temperament and a fond attachment to home and family. 츄르
               </p>
             </dd>
           </Description>

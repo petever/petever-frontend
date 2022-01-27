@@ -8,12 +8,7 @@ const SignInForm = () => {
         <InputText type="email" name="email" placeholder="이메일" value="" />
       </InputRow>
       <InputRow>
-        <InputText
-          type="password"
-          name="password"
-          placeholder="비밀번호"
-          value=""
-        />
+        <InputText type="password" name="password" placeholder="비밀번호" value="" />
       </InputRow>
       <LoginButton type="submit">로그인</LoginButton>
       <div>

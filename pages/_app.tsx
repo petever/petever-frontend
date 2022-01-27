@@ -42,10 +42,7 @@ const App: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   );
 };
 
-App.getInitialProps = async ({
-  Component,
-  ctx,
-}: AppContext): Promise<AppInitialProps> => {
+App.getInitialProps = async ({ Component, ctx }: AppContext): Promise<AppInitialProps> => {
   let pageProps = {};
 
   if (Component.getInitialProps) {
