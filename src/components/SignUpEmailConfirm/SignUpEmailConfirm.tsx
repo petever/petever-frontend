@@ -8,12 +8,13 @@ type SignUpEmailConfirmProps = {
 const SignUpEmailConfirm = ({ email, setEmailVerification }: SignUpEmailConfirmProps) => {
   const handleMailCertify = async () => {
     const result = await getAuthCheckAPI(email);
-    result.data
-      ? setEmailVerification({
-          modal: false,
-          success: true,
-        })
-      : alert('이메일 인증을 확인부탁드립니다.');
+    if (result.data) {
+      return setEmailVerification({
+        modal: false,
+        success: true,
+      });
+    }
+    alert('이메일 인증을 확인부탁드립니다.');
   };
 
   const handleClose = () => {
