@@ -9,6 +9,7 @@ export const setMailCodeAPI = (email: string) => {
   return instance.post(`/mail?email=${email}`);
 };
 
+//메인인증체크
 export const getAuthCheckAPI = (email: string) => {
   return instance.get(`/mail/auth/check?email=${email}`);
 };
