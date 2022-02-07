@@ -1,3 +1,4 @@
+import { SignIn } from './../types/auth';
 import instance from 'src/utils/instance';
 import { Auth } from '../types/auth';
 
@@ -16,4 +17,8 @@ export const getAuthCheckAPI = (email: string) => {
 
 export const signUpAPI = (auth: Auth) => {
   return instance.post(`/signup`, auth);
+};
+
+export const signInAPI = (signInfo: SignIn) => {
+  return instance.post(`/login`, signInfo);
 };

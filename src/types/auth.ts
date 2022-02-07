@@ -3,3 +3,5 @@ export interface Auth {
   name: string;
   password: string;
 }
+
+export type SignIn = Omit<Auth, 'name'>;
