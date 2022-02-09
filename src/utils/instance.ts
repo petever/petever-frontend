@@ -7,7 +7,6 @@ import axios from 'axios';
 */
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_APP_API_KEY,
-  // headers: {'X-Custom-Header': 'foobar'}
   headers: {
     'Access-Control-Allow-Origin': 'https://api.petever.pet',
   },

@@ -132,7 +132,7 @@ const SignUpForm = () => {
       }
       signUpAPI({ email, name: nickname, password })
         .then(() => {
-          Router.replace('/');
+          Router.replace('/signin');
         })
         .catch((error) => {
           console.log(error);
